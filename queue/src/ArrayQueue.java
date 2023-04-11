@@ -19,7 +19,7 @@ public final class ArrayQueue<E> implements Queue<E> {
     }
 
     /**
-     * remove all items in this container.<br/>
+     * Remove all items in this container.<br/>
      * Time complexity: O(n).<br/>
      */
     @Override
@@ -80,7 +80,7 @@ public final class ArrayQueue<E> implements Queue<E> {
     /**
      * Get number of items contained in this queue.<br/>
      * Time complexity: O(1).<br/>
-     * @return length of this queue
+     * @return Length of this queue
      */
     @Override
     public int length() {

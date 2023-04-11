@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings({"Convert2MethodRef", "CodeBlock2Expr"})
 final class QueueTest {
-    public interface QueueFactory {
-        Queue<Integer> create(int size);
+    public interface QueueFactory<T> {
+        Queue<T> create(int size);
     }
 
     public static Stream<Arguments> localParameters() {
@@ -21,7 +21,7 @@ final class QueueTest {
 
     @ParameterizedTest
     @MethodSource("localParameters")
-    public void clear(QueueFactory factory) {
+    public void clear(QueueFactory<Integer> factory) {
         var queue = factory.create(10);
 
         for (int i = 0; i < 10; ++i) {
@@ -47,7 +47,7 @@ final class QueueTest {
 
     @ParameterizedTest
     @MethodSource("localParameters")
-    public void enqueue(QueueFactory factory, boolean isFixedSize) {
+    public void enqueue(QueueFactory<Integer> factory, boolean isFixedSize) {
         var queue = factory.create(10);
 
         for (int i = 0; i < 10; ++i) {
@@ -70,7 +70,7 @@ final class QueueTest {
 
     @ParameterizedTest
     @MethodSource("localParameters")
-    public void dequeue(QueueFactory factory) {
+    public void dequeue(QueueFactory<Integer> factory) {
         var queue = factory.create(10);
 
         for (int i = 0; i < 10; ++i) {
@@ -95,7 +95,7 @@ final class QueueTest {
 
     @ParameterizedTest
     @MethodSource("localParameters")
-    public void frontValue(QueueFactory factory) {
+    public void frontValue(QueueFactory<Integer> factory) {
         var queue = factory.create(10);
 
         for (int i = 0; i < 10; ++i) {
@@ -120,7 +120,7 @@ final class QueueTest {
 
     @ParameterizedTest
     @MethodSource("localParameters")
-    public void length(QueueFactory factory) {
+    public void length(QueueFactory<Integer> factory) {
         var queue = factory.create(10);
 
         for (int i = 0; i < 10; ++i) {

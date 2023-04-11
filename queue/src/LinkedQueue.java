@@ -1,10 +1,10 @@
 /**
- * LinkedList based queue implementation.<br/>
+ * Linked list based queue implementation.<br/>
  * @param <E> Container type
  */
-public class LinkedQueue<E> implements Queue<E> {
+public final class LinkedQueue<E> implements Queue<E> {
     private static final class Node<E> {
-        public E value;
+        public final E value;
         public Node<E> next;
 
         public Node(E value, Node<E> next) {
@@ -18,7 +18,7 @@ public class LinkedQueue<E> implements Queue<E> {
     private Node<E> rear;
 
     /**
-     * Create <code>LinkedQueue</code> with given node pool.<br/>
+     * Create <code>LinkedQueue</code>.<br/>
      */
     public LinkedQueue() {
         this.length = 0;
@@ -27,7 +27,7 @@ public class LinkedQueue<E> implements Queue<E> {
     }
 
     /**
-     * remove all items in this container.<br/>
+     * Remove all items in this container.<br/>
      * Time complexity: O(1).<br/>
      */
     @Override
@@ -89,7 +89,7 @@ public class LinkedQueue<E> implements Queue<E> {
     /**
      * Get number of items contained in this queue.<br/>
      * Time complexity: O(1).<br/>
-     * @return length of this queue
+     * @return Length of this queue
      */
     @Override
     public int length() {
