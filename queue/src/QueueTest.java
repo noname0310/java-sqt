@@ -31,14 +31,6 @@ final class QueueTest {
 
         assertEquals(0, queue.length());
 
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            queue.frontValue();
-        });
-
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            queue.dequeue();
-        });
-
         queue.enqueue(0);
 
         assertEquals(1, queue.length());

@@ -31,14 +31,6 @@ final class StackTest {
 
         assertEquals(0, stack.length());
 
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            stack.topValue();
-        });
-
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            stack.pop();
-        });
-
         stack.push(0);
 
         assertEquals(1, stack.length());
@@ -75,6 +67,10 @@ final class StackTest {
             assertEquals(i, stack.topValue());
             assertEquals(i, stack.pop());
         }
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            stack.pop();
+        });
     }
 
     @ParameterizedTest
@@ -91,6 +87,10 @@ final class StackTest {
             assertEquals(i, stack.topValue());
             stack.pop();
         }
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            stack.topValue();
+        });
     }
 
     @ParameterizedTest
@@ -100,11 +100,11 @@ final class StackTest {
 
         for (int i = 0; i < 10; ++i) {
             stack.push(i);
+            assertEquals(i + 1, stack.length());
         }
-        assertEquals(10, stack.length());
 
         for (int i = 9; i >= 0; --i) {
-            assertEquals(i, stack.topValue());
+            assertEquals(i + 1, stack.length());
             stack.pop();
         }
     }
