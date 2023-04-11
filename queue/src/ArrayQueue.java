@@ -57,10 +57,10 @@ public final class ArrayQueue<E> implements Queue<E> {
         if (this.front == this.rear) {
             throw new IndexOutOfBoundsException("Queue is empty");
         }
-        E it = this.data[this.front];
+        E item = this.data[this.front];
         this.data[this.front] = null;
         this.front = (this.front + 1) % this.data.length;
-        return it;
+        return item;
     }
 
     /**
