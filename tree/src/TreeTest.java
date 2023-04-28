@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class TreeTest {
     public static void main(String[] args){
         //build tree
@@ -19,6 +21,8 @@ public class TreeTest {
         System.out.println();
         inorderTraversal(nodeA, System.out::print);
         System.out.println();
+        inorderTraversalIterative(nodeA, System.out::print);
+        System.out.println();
         postorderTraversal(nodeA, System.out::print);
         System.out.println();
     }
@@ -39,6 +43,22 @@ public class TreeTest {
         inorderTraversal(node.left(), callback);
         callback.call(node.element());
         inorderTraversal(node.right(), callback);
+    }
+
+    public static <T> void inorderTraversalIterative(BinNode<T> root, TraversalCallback<T> callback) {
+        Stack<BinNode<T>> stack = new Stack<>();
+        BinNode<T> current = root;
+
+        while (current != null || !stack.isEmpty()) {
+            if (current != null) {
+                stack.push(current);
+                current = current.left();
+            } else {
+                BinNode<T> node = stack.pop();
+                callback.call(node.element());
+                current = node.right();
+            }
+        }
     }
 
     public static <T> void postorderTraversal(BinNode<T> node, TraversalCallback<T> callback) {
